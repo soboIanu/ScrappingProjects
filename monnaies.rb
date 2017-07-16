@@ -11,7 +11,7 @@ def url_parser #
 end
 
 def c_regex_search(string)
-  requete = /\w+\.?\+?\w+?@\w+\-?\w+\.\w+/ #query regex email de mairie // à refacto
+  requete = /\w+\.?\+?\w+?@\w+\-?\w+\.\w+/
   regex_mail = string.match requete
   unless regex_mail == nil
       regex_mail = regex_mail.to_s
@@ -25,7 +25,6 @@ def get_the_currency
   @index_crypto = []
   iterateur = 0
   doc = url_parser
- # p link
   doc.css('tr > td.no-wrap.currency-name > a').each do |node|
     @texte_a_chercher = node.text
     @index_crypto.push(@texte_a_chercher)
@@ -34,24 +33,18 @@ def get_the_currency
   end
 
   doc.css('.price').each do |prix|
-    #puts @texte_a_chercher
     prix_a_chercher = prix.text
     crypto_name = @index_crypto[iterateur]
     @crypto_contes[crypto_name]["price:"] = prix_a_chercher
-    #mail_regex_search(texte_a_chercher)  #appel de la fonction regex, retour du mail
     iterateur += 1
     end
-
-# p @index_crypto
- #puts @crypto_contes
 
  @crypto_contes.each do |node|
   puts node
   end
   puts @crypto_contes.length
- # p @crypto_contes
 
-end #fin fonction
+end 
 
 
 get_the_currency
