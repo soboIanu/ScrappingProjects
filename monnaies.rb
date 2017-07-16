@@ -5,7 +5,7 @@ require 'open-uri'
 
 URL_BC = "https://coinmarketcap.com/all/views/all/"
 
-def url_parser #
+def url_parser
   page = Nokogiri::HTML(open("#{URL_BC}"))
   return page
 end
@@ -44,7 +44,7 @@ def get_the_currency
   end
   puts @crypto_contes.length
 
-end 
+end
 
 
 get_the_currency
